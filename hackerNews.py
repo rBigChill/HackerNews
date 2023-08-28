@@ -27,7 +27,6 @@ class HackerNews:
     def _getArticles(self):
         self._makeRequest()
 
-        i = 0
         for submission_id in self.submission_ids[:10]:
             r = requests.get(f"{self.ARTICLES}{submission_id}.json")
             response_dict = r.json()
@@ -38,9 +37,8 @@ class HackerNews:
                 r.title = response_dict["title"]
                 r.url = response_dict["url"]
                 self.frontPage.append(r)
-                i += 1
             except KeyError:
-                i += 1
+                continue
 
     def GetNews(self):
         self._getArticles()
