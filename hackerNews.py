@@ -4,7 +4,7 @@ import sys
 try:
     import requests
 except:
-    subprocess.check_call([sys.execuable, "-m", "pip", "istall", "requests"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
 finally:
     import requests
 
@@ -42,11 +42,13 @@ class HackerNews:
 
     def GetNews(self):
         self._getArticles()
-
+        
+        count = 1
         print()
         for i in self.frontPage:
-            article = f"{i.title}\n\t{i.url}\n"
+            article = f"{count}) {i.title}\n\t{i.url:0}\n"
             print(article)
+            count += 1
         print()
 
 if __name__ == "__main__":
