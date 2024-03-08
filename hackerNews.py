@@ -1,5 +1,8 @@
+# Author: Jorge Cisneros
+
 import subprocess
 import sys
+import webbrowser
 
 try:
     import requests
@@ -27,15 +30,15 @@ class HackerNews:
     def _getArticles(self):
         self._makeRequest()
 
-        for submission_id in self.submission_ids[:10]:
+        for submission_id in self.submission_ids[:11]:
             r = requests.get(f"{self.ARTICLES}{submission_id}.json")
-            response_dict = r.json()
+            self.response_dict = r.json()
 
             r = Article()
 
             try:
-                r.title = response_dict["title"]
-                r.url = response_dict["url"]
+                r.title = self.response_dict["title"]
+                r.url = self.response_dict["url"]
                 self.frontPage.append(r)
             except KeyError:
                 continue
@@ -54,3 +57,10 @@ class HackerNews:
 if __name__ == "__main__":
     HN = HackerNews()
     HN.GetNews()
+
+    selection = 0
+
+    while selection != 'q':
+        selection = input("Print article (#) or (q)uit?: ")
+        if selection != 'q':
+            webbrowser.open(HN.frontPage[int(selection)].url)
