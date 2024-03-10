@@ -68,6 +68,7 @@ class HackerNews:
                 self._printArticles()
 
     def GetNews(self):
+        self._clear()
         self._getArticles()
         self._printArticles()
         self._prompt()
