@@ -4,6 +4,8 @@ import subprocess
 import sys
 import webbrowser
 
+from os import system, name
+
 try:
     import requests
 except:
@@ -43,9 +45,7 @@ class HackerNews:
             except KeyError:
                 continue
 
-    def GetNews(self):
-        self._getArticles()
-        
+    def _printArticles(self):
         count = 1
         print()
         for i in self.frontPage:
@@ -54,13 +54,24 @@ class HackerNews:
             count += 1
         print()
 
+    def _clear(self):
+        system('cls') if name == 'nt' else system('clear')
+
+    def _prompt(self):
+        selection = 0
+
+        while selection != 'q':
+            selection = input("Print article (#) or (q)uit?: ")
+            if selection != 'q':
+                webbrowser.open(HN.frontPage[int(selection)-1].url)
+                self._clear()
+                self._printArticles()
+
+    def GetNews(self):
+        self._getArticles()
+        self._printArticles()
+        self._prompt()
+        
 if __name__ == "__main__":
     HN = HackerNews()
     HN.GetNews()
-
-    selection = 0
-
-    while selection != 'q':
-        selection = input("Print article (#) or (q)uit?: ")
-        if selection != 'q':
-            webbrowser.open(HN.frontPage[int(selection)-1].url)
