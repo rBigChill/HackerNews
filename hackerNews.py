@@ -47,6 +47,7 @@ class HackerNews:
 
     def _printArticles(self):
         count = 1
+        print(f"{'':10}*** Hacker News ***")
         print()
         for i in self.frontPage:
             article = f"{count}) {i.title}\n\t{i.url:0}\n"
