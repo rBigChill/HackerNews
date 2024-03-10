@@ -50,7 +50,7 @@ class HackerNews:
         print(f"{'':10}*** Hacker News ***")
         print()
         for i in self.frontPage:
-            article = f"{count}) {i.title}\n\t{i.url:0}\n"
+            article = f"{count}) {i.title}\n"
             print(article)
             count += 1
         print()
