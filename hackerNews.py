@@ -62,11 +62,14 @@ class HackerNews:
         selection = 0
 
         while selection != 'q':
-            selection = input("Print article (#) or (q)uit?: ")
-            if selection != 'q':
-                webbrowser.open(HN.frontPage[int(selection)-1].url)
-                self._clear()
-                self._printArticles()
+            try:
+                selection = input("Print article (#) or (q)uit?: ")
+                if selection != 'q':
+                    webbrowser.open(HN.frontPage[int(selection)-1].url)
+                    self._clear()
+                    self._printArticles()
+            except ValueError:
+                print("Enter article number")
 
     def GetNews(self):
         self._clear()
