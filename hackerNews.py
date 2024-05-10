@@ -68,7 +68,7 @@ class HackerNews:
                     webbrowser.open(HN.frontPage[int(selection)-1].url)
                     self._clear()
                     self._printArticles()
-            except ValueError:
+            except (ValueError, IndexError):
                 print("Enter article number")
 
     def GetNews(self):
