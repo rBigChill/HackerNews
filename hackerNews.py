@@ -32,7 +32,7 @@ class HackerNews:
     def _getArticles(self):
         self._makeRequest()
 
-        for submission_id in self.submission_ids[:15]:
+        for submission_id in self.submission_ids[:10]:
             r = requests.get(f"{self.ARTICLES}{submission_id}.json")
             self.response_dict = r.json()
 
