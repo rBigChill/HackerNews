@@ -16,7 +16,7 @@ Prerequisites
 Installation & Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/HackerNews-CLI.git
+   git clone https://github.com/rBigChill/HackerNews-CLI.git
    cd HackerNews-CLI
    ```
 2. Ensure dependencies are installed:
